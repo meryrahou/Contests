@@ -1,149 +1,35 @@
-row0 = input()
-row1 = input()
-row2 = input()
+# Read input board
+board = [input() for _ in range(3)]
 
-individual = 0
-if row0[0] == row1[0] == row2[0]: individual += 1
-if row0[1] == row1[1] == row2[1]: individual += 1
-if row0[2] == row1[2] == row2[2]: individual += 1
-if row0[0] == row0[1] == row0[2]: individual += 1
-if row1[0] == row1[1] == row1[2]: individual += 1
-if row2[0] == row2[1] == row2[2]: individual += 1
-if row0[0] == row1[1] == row2[2]: individual += 1
-if row0[2] == row1[1] == row2[0]: individual += 1
+# Initialize counts
+individual_heads = 0
+team_heads = 0
 
-print(individual)
+# Check rows and columns
+for i in range(3):
+    row = board[i]
+    col = ''.join(board[j][i] for j in range(3))
+    if row.count(row[0]) == 3:
+        individual_heads += 1
+    elif len(set(row)) == 2:
+        team_heads += 1
+    if col.count(col[0]) == 3:
+        individual_heads += 1
+    elif len(set(col)) == 2:
+        team_heads += 1
 
-team = 0
-teams = []
-if row0[0] == row0[1]:
-    current_team = sorted([row0[0], row0[2]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row0[0] == row0[2]:
-    current_team = sorted([row0[0], row0[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row0[1] == row0[2]:
-    current_team = sorted([row0[1], row0[2]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
+# Check diagonals
+diag1 = ''.join(board[i][i] for i in range(3))
+diag2 = ''.join(board[i][2 - i] for i in range(3))
+if diag1.count(diag1[0]) == 3:
+    individual_heads += 1
+elif len(set(diag1)) == 2:
+    team_heads += 1
+if diag2.count(diag2[0]) == 3:
+    individual_heads += 1
+elif len(set(diag2)) == 2:
+    team_heads += 1
 
-if row1[0] == row1[1]:
-    current_team = sorted([row1[0], row1[2]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row1[0] == row1[2]:
-    current_team = sorted([row1[0], row1[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row1[1] == row1[2]:
-    current_team = sorted([row1[0], row1[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-
-
-if row2[0] == row2[1]:
-    current_team = sorted([row2[0], row2[2]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row2[0] == row2[2]:
-    current_team = sorted([row2[0], row2[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row2[1] == row2[2]:
-    current_team = sorted([row2[0], row2[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-
-if row0[0] == row1[0]:
-    current_team = sorted([row0[0], row2[0]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row0[0] == row2[0]:
-    current_team = sorted([row0[0], row1[0]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row1[0] == row2[0]:
-    current_team = sorted([row0[0], row1[0]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-
-if row0[1] == row1[1]:
-    current_team = sorted([row0[1], row2[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row0[1] == row2[1]:
-    current_team = sorted([row0[1], row1[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row1[1] == row2[1]:
-    current_team = sorted([row0[1], row1[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-
-if row0[2] == row1[2]:
-    current_team = sorted([row0[2], row2[2]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row0[2] == row2[2]:
-    current_team = sorted([row0[2], row1[2]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row1[2] == row2[2]:
-    current_team = sorted([row0[2], row1[2]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-
-if row0[0] == row1[1]:
-    current_team = sorted([row0[0], row2[2]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row0[0] == row2[2]:
-    current_team = sorted([row0[0], row1[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row1[1] == row2[2]:
-    current_team = sorted([row0[0], row1[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-
-if row0[2] == row1[1]:
-    current_team = sorted([row0[2], row2[0]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row0[2] == row2[0]:
-    current_team = sorted([row0[2], row1[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-if row1[1] == row2[0]:
-    current_team = sorted([row0[2], row1[1]])
-    if current_team not in teams:
-        teams.append(current_team)
-        team += 1
-
-print(team)
-
+# Print counts
+print(individual_heads)
+print(team_heads)

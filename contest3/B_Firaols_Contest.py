@@ -2,9 +2,10 @@ max_diff , problems = map(int, input().split())
 difficulties = list(map(int, input().split()))
 
 
-list_probs = [0] * max_diff
+difficulty_cout = {}
 
-return_char = ''
+
+res = []
 
 
 # def can_round(list_probs):
@@ -23,15 +24,21 @@ return_char = ''
 
 
 # fixing it in order not to exceed time limit
+
 for problem in difficulties:
-    list_probs[problem - 1] += 1
-    if 0 not in list_probs:
-        for i in range(len(list_probs)):
-            list_probs[i] -= 1
-        return_char += '1'
+    if problem not in difficulty_cout:
+        difficulty_cout[problem] = 0
+    difficulty_cout[problem] += 1
+
+    if len(difficulty_cout) == max_diff:
+        res.append('1')
+        for diff in list(difficulty_cout.keys()):
+            difficulty_cout[diff] -= 1
+            if difficulty_cout[diff] == 0:
+                del difficulty_cout[diff]
+
     else:
-        return_char += '0'
+        res.append('0')
 
-print(return_char)
-
+print(''.join(res))
 
