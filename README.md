@@ -1,16 +1,10 @@
 # Contests Repository
 
-## Description
+This repository contains solutions to problems from various codeforces coding contests.
 
-This repository contains solutions to problems from various coding contests.
-
-## Contest Structure
-
-The solutions are organized by contest name, with each contest folder containing solutions submitted for that contest.
+- The solutions are organized by contest name, with each contest folder containing solutions submitted for that contest.
 
 
-## Acknowledgment
+### Acknowledgment
 
-Thank you to the creators of the coding contests for providing the platform for learning and practicing coding skills.
-
-### Shoutout to A2SV's Remote Contest Squad. 
+Thank you to A2SV's Remote Contest Squad (the creators of the coding contests) for providing the chance to learn and practice our coding skills.
