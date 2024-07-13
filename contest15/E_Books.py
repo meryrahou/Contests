@@ -1,7 +1,4 @@
-books , time = map(int, input().split())
-
-minutes = list(map(int, input().split()))
-
+x
 consumed = 0
 left = 0
 nb_books = 0
