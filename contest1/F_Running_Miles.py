@@ -1,10 +1,8 @@
 from sortedcontainers import SortedList
 
-# Number of test cases
 t = int(input())
 
 for _ in range(t):
-    # Number of sights
     n = int(input())
     
     # Beauties of sights
